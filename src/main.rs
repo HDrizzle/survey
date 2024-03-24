@@ -5,6 +5,7 @@ use rouille;
 use local_ip_address;
 
 mod logger;
+mod analysis;
 
 // CONSTS
 const PORT: u16 = 42069;
@@ -38,11 +39,11 @@ fn request_handler(req: &rouille::Request, sender: Sender<String>) -> rouille::R
         "checkin" => {
             // Spy stuff
             match req.data() {
-                Some(mut data) => {
+                Some(mut body) => {
                     let mut raw_data = String::new();
-                    match data.read_to_string(&mut raw_data) {
+                    match body.read_to_string(&mut raw_data) {
                         Ok(raw_data_size) => {
-                            if raw_data_size > CHECKIN_SIZE_LIMIT {
+                            if raw_data_size > CHECKIN_SIZE_LIMIT || raw_data.contains('\n') {
                                 return rouille::Response::text("Nice try");
                             }
                             sender.send(raw_data).unwrap();
@@ -71,16 +72,24 @@ fn serve_js() -> rouille::Response {
 }
 
 fn main() {
+    // Get command line args
     let mut cmd_args = Vec::<String>::new();
     for arg in env::args() {
         cmd_args.push(arg);
     }
+    // Check for analysis arg
+    if cmd_args.contains(&("-analysis".to_string())) {
+        analysis::main();
+        return;
+    }
+    // Get IP
     let ip_addr: IpAddr = if cmd_args.contains(&("-localhost".to_string())) {
         IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1))
     }
     else {
         local_ip_address::local_ip().unwrap()
     };
+    // Run server
     let addr = SocketAddr::new(ip_addr, PORT);
     println!("Server running at {:?}", addr);
     run_server(addr);
