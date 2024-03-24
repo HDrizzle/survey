@@ -1,7 +1,9 @@
 // Main
 
-use std::{net::{SocketAddr, IpAddr, Ipv4Addr}, fs, time::{Instant, Duration, SystemTime, UNIX_EPOCH}, io::Read};
+use std::{fs, io::Read, net::{IpAddr, Ipv4Addr, SocketAddr}, sync::mpsc::{self, Sender}, thread};
 use rouille;
+
+mod logger;
 
 // CONSTS
 const PORT: u16 = 42069;
@@ -9,13 +11,18 @@ const LOG_FILE: &str = "log.txt";
 const CHECKIN_SIZE_LIMIT: usize = 100;
 
 fn run_server(addr: SocketAddr) {
+    // Start logger thread
+    let (send, recv) = mpsc::channel::<String>();
+    let logger_handle = thread::spawn(move || logger::log_main_loop(recv));
     rouille::start_server(
         addr,
-        request_handler
+        move |req: &rouille::Request| -> rouille::Response {
+            request_handler(req, send.clone())
+        }
     );
 }
 
-fn request_handler(mut req: &rouille::Request) -> rouille::Response {
+fn request_handler(mut req: &rouille::Request, sender: Sender<String>) -> rouille::Response {
     let binding = req.url();
     let url_parts: Vec<&str> = binding.strip_prefix("/").expect("url should start with \"/\"").split("/").collect();
     //dbg!(&url_parts);
@@ -37,7 +44,7 @@ fn request_handler(mut req: &rouille::Request) -> rouille::Response {
                             if raw_data_size > CHECKIN_SIZE_LIMIT {
                                 return rouille::Response::text("Nice try");
                             }
-                            // TODO: Append to log file alongside timestamp
+                            sender.send(raw_data);
                         },
                         Err(_) => {}
                     }
