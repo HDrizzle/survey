@@ -1,6 +1,6 @@
 // For logging client checkins
 
-use std::{time::{Instant, Duration, SystemTime, UNIX_EPOCH}, sync::mpsc::Receiver, fs};
+use std::{time::{SystemTime, UNIX_EPOCH}, sync::mpsc::Receiver, fs};
 
 use crate::LOG_FILE;
 

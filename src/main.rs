@@ -1,7 +1,8 @@
 // Main
 
-use std::{fs, io::Read, net::{IpAddr, Ipv4Addr, SocketAddr}, sync::mpsc::{self, Sender}, thread};
+use std::{fs, io::Read, net::{IpAddr, Ipv4Addr, SocketAddr}, sync::mpsc::{self, Sender}, thread, env};
 use rouille;
+use local_ip_address;
 
 mod logger;
 
@@ -13,7 +14,7 @@ const CHECKIN_SIZE_LIMIT: usize = 100;
 fn run_server(addr: SocketAddr) {
     // Start logger thread
     let (send, recv) = mpsc::channel::<String>();
-    let logger_handle = thread::spawn(move || logger::log_main_loop(recv));
+    let _logger_handle = thread::spawn(move || logger::log_main_loop(recv));
     rouille::start_server(
         addr,
         move |req: &rouille::Request| -> rouille::Response {
@@ -22,7 +23,7 @@ fn run_server(addr: SocketAddr) {
     );
 }
 
-fn request_handler(mut req: &rouille::Request, sender: Sender<String>) -> rouille::Response {
+fn request_handler(req: &rouille::Request, sender: Sender<String>) -> rouille::Response {
     let binding = req.url();
     let url_parts: Vec<&str> = binding.strip_prefix("/").expect("url should start with \"/\"").split("/").collect();
     //dbg!(&url_parts);
@@ -44,7 +45,7 @@ fn request_handler(mut req: &rouille::Request, sender: Sender<String>) -> rouill
                             if raw_data_size > CHECKIN_SIZE_LIMIT {
                                 return rouille::Response::text("Nice try");
                             }
-                            sender.send(raw_data);
+                            sender.send(raw_data).unwrap();
                         },
                         Err(_) => {}
                     }
@@ -70,6 +71,17 @@ fn serve_js() -> rouille::Response {
 }
 
 fn main() {
-    let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), PORT);
+    let mut cmd_args = Vec::<String>::new();
+    for arg in env::args() {
+        cmd_args.push(arg);
+    }
+    let ip_addr: IpAddr = if cmd_args.contains(&("-localhost".to_string())) {
+        IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1))
+    }
+    else {
+        local_ip_address::local_ip().unwrap()
+    };
+    let addr = SocketAddr::new(ip_addr, PORT);
+    println!("Server running at {:?}", addr);
     run_server(addr);
 }
