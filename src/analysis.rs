@@ -197,7 +197,7 @@ fn mean(in_: &Vec<u32>) -> f32 {
 	sum_f / (in_.len() as f32)
 }
 
-fn median(in_: &Vec<u32>) -> f32 {// TODO: check
+fn median(in_: &Vec<u32>) -> f32 {
 	assert!(in_.len() > 0);
 	let mut in_sorted: Vec<u32> = in_.clone();
 	in_sorted.sort();

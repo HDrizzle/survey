@@ -1,0 +1,9 @@
+# To be placed in server's home directory
+
+cd survey
+echo "Log file info:"
+ls -l log.txt
+echo ""
+echo "Analysis:"
+#cargo run -- -analysis
+target/debug/survey -analysis

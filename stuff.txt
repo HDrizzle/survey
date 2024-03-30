@@ -13,3 +13,12 @@ Reveal HTML:
 
 Email:
 Hi everyone, please fill out my survey to collect data for my independent study project. It is slightly more sophisticated then what I could do w/ google forms.
+
+TinyURLS:
+
+For home server: https://tinyurl.com/mrxpmb4c -> http://192.80.185.246:42069
+Clicks before sending emai: TODO
+
+(Only to be used in case home server is offline)
+For mac local IP on MSSM LAN: https://tinyurl.com/2as3278m -> http://192.168.3.76:42069
+Clicks before sending emai: TODO

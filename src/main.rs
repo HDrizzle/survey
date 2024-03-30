@@ -26,7 +26,10 @@ fn run_server(addr: SocketAddr) {
 
 fn request_handler(req: &rouille::Request, sender: Sender<String>) -> rouille::Response {
     let binding = req.url();
-    let url_parts: Vec<&str> = binding.strip_prefix("/").expect("url should start with \"/\"").split("/").collect();
+    let url_parts: Vec<&str> = match binding.strip_prefix("/") {
+        Some(s) => s,
+        None => &binding
+    }.split("/").collect();
     //dbg!(&url_parts);
     if url_parts.len() == 0 {
         return serve_main_page();
