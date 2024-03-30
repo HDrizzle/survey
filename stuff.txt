@@ -1,3 +1,5 @@
+Reveal HTML:
+
 <h2>Happy April Fools</h2>
 <p>
     There is no survey/research project, however I did collect some data from this experiment which will be posted here as soon as I get around to analysing it.
@@ -8,3 +10,6 @@
     So I have a histogram of how long people looked at this in total on a logarithmic scale in seconds (if you waited for it then later tried to load it again, that time would be added up and counted as one data point). Sorry the x-axis isn't great.
 </p>
 <img src="secs_total_hist_log.png" style="width: 700px; height: 500px;"></img>
+
+Email:
+Hi everyone, please fill out my survey to collect data for my independent study project. It is slightly more sophisticated then what I could do w/ google forms.

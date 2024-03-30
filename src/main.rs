@@ -53,7 +53,7 @@ fn request_handler(req: &rouille::Request, sender: Sender<String>) -> rouille::R
                 },
                 None => {}
             }
-            rouille::Response::empty_204()
+            rouille::Response::from_data("application/octet-stream", Vec::<u8>::new())
         },
         _ => rouille::Response::empty_404()
     }

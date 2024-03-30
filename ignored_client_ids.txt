@@ -1,0 +1,12 @@
+# Client IDs to ignore only during analysis, they will still be collected by the server
+# All these are for the http://192.80.185.246:42069 address
+
+# 2024-3-29 (wed) when I asked Cameron, Iain, Mom, Dad, and Angus to click the link at 19:00
+977087125
+219177646
+
+# Mac laptop
+#28365512
+
+# iPhone
+#54778115
