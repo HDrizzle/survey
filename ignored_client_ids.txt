@@ -2,11 +2,20 @@
 # All these are for the http://192.80.185.246:42069 address
 
 # 2024-3-29 (wed) when I asked Cameron, Iain, Mom, Dad, and Angus to click the link at 19:00
-977087125
-219177646
+#977087125
+#219177646
 
 # Mac laptop
 #28365512
 
 # iPhone
 #54778115
+
+# All of the above is irrelevent as I am now using port 80 not 42069
+# All these are for the http://192.80.185.246 address (default port 80)
+
+# Mac laptop
+538657682
+
+# iPhone
+747492956

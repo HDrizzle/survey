@@ -8,7 +8,7 @@ mod logger;
 mod analysis;
 
 // CONSTS
-const PORT: u16 = 42069;
+const PORT: u16 = 80;//42069;
 const LOG_FILE: &str = "log.txt";
 const CHECKIN_SIZE_LIMIT: usize = 100;
 

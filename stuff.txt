@@ -10,13 +10,17 @@ Reveal HTML:
 		As some people probably guessed, this page didn't have a survey or anything. It was just a loading GIF.
 	</p>
 	<p>
-		However, I did collect data from this experiment. The page had some javascript code that creates a giant random number to identify the client and sends it to the server every second along with a piece of information saying whether the tab is in focus.
-		It also stores that random number as a cookie so if you tried to reload the page it would use thst same number. This means it is still possible to tell that it is the same person viewing the page in the server's log file.
+		However, I did collect data from this experiment. The page created a giant random number to identify the client and sent it to the server every second along with a piece of information saying whether the tab is in focus.
+		It also stored that random number in local storage so if you tried to reload the page it would use thst same number. This means it is still possible to tell that it is the same person viewing the page in the server's log file.
 		The only thing that I wasn't able to track is if someone viewed it on multiple devices in which case it would be interpreted as different people.
 	</p>
 	<p>
 		Just to be clear, the server didn't record IP addresses (which would be usless anyway), User-Agent headers (The type of device your using) or anything like that. So I wasn't spying on anyone.
 	</p>
+	<h2>Results</h2>
+	<pre>
+TODO: Paste analysis results here
+	</pre>
 </body>
 </html>
 
@@ -41,15 +45,19 @@ Email (mssm.students@mssm.org):
 Hi everyone,
 
 Please fill out my survey for my independent study project, it shouldn't take long. It is slightly more complicated than what I could do w/ google forms so I made a simple web page for it. Thanks!
-https://tinyurl.com/mrxpmb4c
+https://tinyurl.com/26m6p9ak
 
-- Hadrian Ward (he/him)
+- Hadrian Ward
 
 TinyURLS:
 
-For home server: https://tinyurl.com/mrxpmb4c -> http://192.80.185.246:42069
+For home server: https://tinyurl.com/26m6p9ak -> http://192.80.185.246
 Clicks before sending emai: TODO
 
 (Only to be used in case home server is offline)
-For mac local IP on MSSM LAN: https://tinyurl.com/2as3278m -> http://192.168.3.76:42069
+For mac local IP on MSSM LAN: https://tinyurl.com/mryp6xdh -> http://192.168.3.76
 Clicks before sending emai: TODO
+
+for port 42069:
+(don't use) For home server: https://tinyurl.com/mrxpmb4c -> http://192.80.185.246:42069
+(don't use) For mac local IP on MSSM LAN: https://tinyurl.com/2as3278m -> http://192.168.3.76:42069
