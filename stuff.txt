@@ -1,18 +1,49 @@
 Reveal HTML:
 
-<h2>Happy April Fools</h2>
-<p>
-    There is no survey/research project, however I did collect some data from this experiment which will be posted here as soon as I get around to analysing it.
-    I hope everyone enjoyed my loading screen.
-</p>
-<h2>Update</h2>
-<p>
-    So I have a histogram of how long people looked at this in total on a logarithmic scale in seconds (if you waited for it then later tried to load it again, that time would be added up and counted as one data point). Sorry the x-axis isn't great.
-</p>
-<img src="secs_total_hist_log.png" style="width: 700px; height: 500px;"></img>
+<html>
+<head>
+	<title>Happy April Fools!</title>
+</head>
+<body>
+	<h1>Happy April Fools!</h1>
+	<p>
+		As some people probably guessed, this page didn't have a survey or anything. It was just a loading GIF.
+	</p>
+	<p>
+		However, I did collect data from this experiment. The page had some javascript code that creates a giant random number to identify the client and sends it to the server every second along with a piece of information saying whether the tab is in focus.
+		It also stores that random number as a cookie so if you tried to reload the page it would use thst same number. This means it is still possible to tell that it is the same person viewing the page in the server's log file.
+		The only thing that I wasn't able to track is if someone viewed it on multiple devices in which case it would be interpreted as different people.
+	</p>
+	<p>
+		Just to be clear, the server didn't record IP addresses (which would be usless anyway), User-Agent headers (The type of device your using) or anything like that. So I wasn't spying on anyone.
+	</p>
+</body>
+</html>
 
-Email:
-Hi everyone, please fill out my survey to collect data for my independent study project. It is slightly more sophisticated then what I could do w/ google forms.
+Prank HTML:
+
+<html>
+<head>
+	<title>Survey</title>
+	<script src="main.js"></script>
+	<div hidden id="hidden"></div>
+</head>
+<body>
+	<h1>Student survey</h1>
+	<p>All submissions are anonymous, the data will be used for my independent study project. Thanks!</p>
+	<div style="border: 1px solid #000000; margin: 5px; padding: 5px; text-align: center;">
+		<img src="loading.gif"></img>
+	</div>
+</body>
+</html>
+
+Email (mssm.students@mssm.org):
+Hi everyone,
+
+Please fill out my survey for my independent study project, it shouldn't take long. It is slightly more complicated than what I could do w/ google forms so I made a simple web page for it. Thanks!
+https://tinyurl.com/mrxpmb4c
+
+- Hadrian Ward (he/him)
 
 TinyURLS:
 
