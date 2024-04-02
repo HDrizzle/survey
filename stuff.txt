@@ -52,12 +52,19 @@ https://tinyurl.com/26m6p9ak
 TinyURLS:
 
 For home server: https://tinyurl.com/26m6p9ak -> http://192.80.185.246
-Clicks before sending emai: TODO
+Clicks before sending emai: 4 (including at least 1 from Will)
 
 (Only to be used in case home server is offline)
 For mac local IP on MSSM LAN: https://tinyurl.com/mryp6xdh -> http://192.168.3.76
 Clicks before sending emai: TODO
 
-for port 42069:
-(don't use) For home server: https://tinyurl.com/mrxpmb4c -> http://192.80.185.246:42069
-(don't use) For mac local IP on MSSM LAN: https://tinyurl.com/2as3278m -> http://192.168.3.76:42069
+for port 42069 (I decided to not use these as most people have all ports beside the common http/s and email ones blocked on the MSSM WiFi and this might not work):
+For home server: https://tinyurl.com/mrxpmb4c -> http://192.80.185.246:42069
+For mac local IP on MSSM LAN: https://tinyurl.com/2as3278m -> http://192.168.3.76:42069
+
+How did it go (2024-4-1):
+The email was sent at ~12:50 and the log file started growing within seconds (wow)
+Results as of 17:00 when I SSHed the reveal index.html over to the server:
+Number of respondants: 47
+In-focus time (secs): 50.361702 (mean), 20 (median)
+I also have that version of the log file in this directory.

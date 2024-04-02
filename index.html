@@ -1,14 +1,25 @@
 <html>
 <head>
-	<title>Survey</title>
-	<script src="main.js"></script>
-	<div hidden id="hidden"></div>
+	<title>Happy April Fools!</title>
 </head>
 <body>
-	<h1>Student survey</h1>
-	<p>All submissions are anonymous, the data will be used for my independent study project. Thanks!</p>
-	<div style="border: 1px solid #000000; margin: 5px; padding: 5px; text-align: center;">
-		<img src="loading.gif"></img>
-	</div>
+	<h1>Happy April Fools!</h1>
+	<p>
+		As some people probably guessed, this page didn't have a survey or anything. It was just a loading GIF.
+	</p>
+	<p>
+		However, I did collect data from this experiment. The page created a giant random number to identify the client and sent it to the server every second along with a piece of information saying whether the tab is in focus.
+		It also stored that random number in local storage so if you tried to reload the page it would use thst same number. This means it is still possible to tell that it is the same person viewing the page in the server's log file.
+		The only thing that I wasn't able to track is if someone viewed it on multiple devices in which case it would be interpreted as different people.
+	</p>
+	<p>
+		Just to be clear, the server didn't record IP addresses (which would be usless anyway), User-Agent headers (The type of device your using) or anything like that. So I wasn't spying on anyone.
+	</p>
+	<h2>Results</h2>
+	<pre>
+As of 2024-4-1 17:00:
+Number of respondants: 47
+In-focus time (secs): 50.361702 (mean), 20 (median)
+	</pre>
 </body>
 </html>
